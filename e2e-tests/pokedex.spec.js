@@ -12,7 +12,9 @@ describe('Pokedex', () => {
 
   test('Pokemon card can be opened', async({ page }) => {
     await page.getByText('charizard').click()
-    await expect(page.getByText('Solar Power')).toBeVisible()
+    // Expect the new url to be http://localhost:8080/pokemon/charizard
+    expect(page.url()).toMatch('http://localhost:8080/pokemon/charizard')
+    await expect(page.getByText('solar power')).toBeVisible()
   })
 
   test('Pokemon card contains buttons to move around', async ({ page }) => {
